@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>TikTok OAuth Callback</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #161b33; color: #fff;
+         display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+  .box { background: #1f2547; padding: 32px 40px; border-radius: 12px; max-width: 600px; }
+  code { background: #0d1024; padding: 12px; display: block; margin-top: 12px;
+         border-radius: 8px; word-break: break-all; color: #ff5252; font-size: 14px; }
+  h2 { margin-top: 0; }
+  .label { color: #9aa; font-size: 13px; margin-top: 20px; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h2>✅ TikTok đã authorize xong</h2>
+    <p>Copy đoạn <b>code</b> bên dưới, dán vào terminal khi script hỏi:</p>
+    <div class="label">Authorization code:</div>
+    <code id="code">(đang đọc...)</code>
+    <div class="label">State (nếu có):</div>
+    <code id="state">(đang đọc...)</code>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('code').textContent = params.get('code') || '(không có code trong URL)';
+    document.getElementById('state').textContent = params.get('state') || '(none)';
+  </script>
+</body>
+</html>
